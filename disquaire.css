@@ -1,0 +1,750 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,900);
+@font-face {
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.container > header,
+.codrops-top {
+	font-family: 'Lato', Arial, sans-serif;
+}
+
+.container > header {
+	margin: 0 auto;
+	padding: 2em;
+	text-align: center;
+	background: rgba(0,0,0,0.01);
+}
+
+.container > header h1 {
+	font-size: 2.625em;
+	line-height: 1.3;
+	margin: 0;
+	font-weight: 300;
+}
+
+.container > header span {
+	display: block;
+	font-size: 60%;
+	opacity: 0.7;
+	padding: 0 0 0.6em 0.1em;
+}
+
+/* To Navigation Style */
+.codrops-top {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.6);
+	text-transform: uppercase;
+	width: 100%;
+	font-size: 0.69em;
+	line-height: 2.2;
+}
+
+.codrops-top a {
+	text-decoration: none;
+	padding: 0 1em;
+	letter-spacing: 0.1em;
+	color: #888;
+	display: inline-block;
+}
+
+.codrops-top a:hover {
+	background: rgba(255,255,255,0.95);
+	color: #333;
+}
+
+.codrops-top span.right {
+	float: right;
+}
+
+.codrops-top span.right a {
+	float: left;
+	display: block;
+}
+
+.codrops-icon:before {
+	font-family: 'codropsicons';
+	margin: 0 4px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.codrops-icon-drop:before {
+	content: "\e001";
+}
+
+.codrops-icon-prev:before {
+	content: "\e004";
+}
+
+/* Demo Buttons Style */
+.codrops-demos {
+	padding-top: 1em;
+	font-size: 0.9em;
+}
+
+.codrops-demos a {
+	text-decoration: none;
+	outline: none;
+	display: inline-block;
+	margin: 0.5em;
+	padding: 0.7em 1.1em;
+	border: 3px solid #b1aea6;
+	color: #b1aea6;
+	font-weight: 700;
+}
+
+.codrops-demos a:hover,
+.codrops-demos a.current-demo,
+.codrops-demos a.current-demo:hover {
+	border-color: #89867e;
+	color: #89867e;
+}
+
+@media screen and (max-width: 25em) {
+
+	.codrops-icon span {
+		display: none;
+	}
+
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+    background: url(asset/rupture-le-nouveau-cafe-disquaire-du-haut-marais.jpg);
+	font-family: 'Lato', Arial, sans-serif;
+	color: #fff;
+}
+
+.wrapper {
+	margin: 0 auto 100px auto;
+	max-width: 960px;
+}
+
+.stage {
+	list-style: none;
+	padding: 0;
+}
+
+/*************************************
+Build the scene and rotate on hover
+**************************************/
+
+.scene {
+	width: 260px;
+	height: 400px;
+	margin: 30px;
+	float: left;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	perspective: 1000px;
+}
+
+.movie {
+	width: 260px;
+	height: 400px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-130px);
+	-moz-transform: translateZ(-130px);
+	transform: translateZ(-130px);
+	-webkit-transition: -webkit-transform 350ms;
+	-moz-transition: -moz-transform 350ms;
+	transition: transform 350ms;
+}
+
+.movie:hover {
+	-webkit-transform: rotateY(-78deg) translateZ(20px);
+	-moz-transform: rotateY(-78deg) translateZ(20px);
+	transform: rotateY(-78deg) translateZ(20px);
+}
+
+/*************************************
+Transform and style the two planes
+**************************************/
+
+.movie .poster, 
+.movie .info {
+	position: absolute;
+	width: 260px;
+	height: 400px;
+	background-color: #fff;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.movie .poster  {
+	-webkit-transform: translateZ(130px);
+	-moz-transform: translateZ(130px);
+	transform: translateZ(130px);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.movie .info {
+	-webkit-transform: rotateY(90deg) translateZ(130px);
+	-moz-transform: rotateY(90deg) translateZ(130px);
+	transform: rotateY(90deg) translateZ(130px);
+	border: 1px solid #B8B5B5;
+	font-size: 0.75em;
+}
+
+/*************************************
+Shadow beneath the 3D object
+**************************************/
+
+.csstransforms3d .movie::after {
+	content: '';
+	width: 260px;
+	height: 260px;
+	position: absolute;
+	bottom: 0;
+	box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	-webkit-transform: rotateX(90deg) translateY(130px);
+	-moz-transform: rotateX(90deg) translateY(130px);
+	transform: rotateX(90deg) translateY(130px);
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie:hover::after {
+	box-shadow: 20px -5px 50px rgba(0,0,0,0.3);
+}
+
+/*************************************
+Movie information
+**************************************/
+
+.info header {
+	color: #FFF;
+	padding: 7px 10px;
+	font-weight: bold;
+	height: 195px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	text-shadow: 0px 1px 1px rgba(0,0,0,1);
+}
+
+.info header h1 {
+	margin: 0 0 2px;
+	font-size: 1.4em;
+}
+
+.info header .rating {
+	border: 1px solid #FFF;
+	padding: 0px 3px;
+}
+
+.info p {
+	padding: 1.2em 1.4em;
+	margin: 2px 0 0;
+	font-weight: 700;
+	color: #666;
+	line-height: 1.4em;
+	border-top: 10px solid #555;
+}
+
+/*************************************
+Generate "lighting" using box shadows
+**************************************/
+
+.movie .poster,
+.movie .info,
+.movie .info header {
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie .poster {
+	box-shadow: inset 0px 0px 40px rgba(255,255,255,0);
+}
+
+.csstransforms3d .movie:hover .poster {
+	box-shadow: inset 300px 0px 40px rgba(255,255,255,0.8);
+}
+
+.csstransforms3d .movie .info, 
+.csstransforms3d .movie .info header {
+	box-shadow: inset -300px 0px 40px rgba(0,0,0,0.5);
+}
+
+.csstransforms3d .movie:hover .info, 
+.csstransforms3d .movie:hover .info header {
+	box-shadow: inset 0px 0px 40px rgba(0,0,0,0);
+}
+
+/*************************************
+Posters and still images
+**************************************/
+
+.scene:nth-child(1) .movie .poster {
+  background-image: url(asset/Carl\ Cox\ 1388\ -\ Credit\ Dan\ Reid.jpg);
+}
+
+.scene:nth-child(2) .poster {
+  background-image: url(asset/samtop.jpg);
+}
+
+.scene:nth-child(3) .poster {
+  background-image: url(asset/franki.jpg);
+}
+
+.scene:nth-child(1) .info header {
+	background-image: url(asset/Carl_Cox-The_Revolution_Continues-Frontal.png);
+}
+
+.scene:nth-child(2) .info header {
+	background-image: url(asset/samretro.png);
+}
+
+.scene:nth-child(3) .info header {
+	background-image: url(asset/house_masters_frankie_knuckles_cd_ok.png);
+}
+
+/*************************************
+Fallback
+**************************************/
+.no-csstransforms3d .movie .poster, 
+.no-csstransforms3d .movie .info {
+	position: relative;
+}
+
+/*************************************
+Media Queries
+**************************************/
+@media screen and (max-width: 60.75em){
+	.scene {
+		float: none;
+		margin: 30px auto 60px;
+	}
+}
+
+
+
+
+/*nav bar explosif debut */
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;  
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+   
+}
+
+
+.nav-up {
+    top: -40px;
+}
+
+
+li {
+    list-style: none;
+}
+ 
+ 
+/*------------------------ 2 Home ------------------------*/
+
+.main {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.main:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    opacity: .85;
+	position: absolute;
+}
+
+.nav-icon {
+    width: 23px;
+    height: 18px;
+    position: relative;    
+    transform: rotate(0deg);     
+    transition: .5s ease-in-out;
+    cursor: pointer;
+	margin-top: 7px;
+	margin-left: 1400px;
+
+}
+
+.nav-icon span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    opacity: 1;    
+    transform: rotate(0deg);   
+    transition: .25s ease-in-out;
+}
+
+.nav-icon span:nth-child(1) {
+    top: 0px;     
+    transform-origin: left center;
+}
+
+.nav-icon span:nth-child(2) {
+    top: 6px;    
+    transform-origin: left center;
+}
+
+.nav-icon span:nth-child(3) {
+    top: 12px;     
+    transform-origin: left center;
+    width: 60%;
+    right: 0 !important;
+}
+
+.nav-icon:hover span:nth-child(3) {
+    width: 100%;
+}
+
+
+
+
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;  
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+   
+}
+
+
+.nav-up {
+    top: -40px;
+}
+
+
+li {
+    list-style: none;
+}
+ 
+ 
+/*------------------------ 2 Home ------------------------*/
+
+.main {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+
+.main:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    opacity: .85;
+    position: absolute;
+}
+  
+
+.main-title {
+    font-size: 24px;
+    line-height: 28px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.hello {
+    color: #fff;
+    line-height: 51px;
+}
+.main-content {
+    padding: 0 60px;
+    vertical-align: middle;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+}
+.logo a{
+	color: orange;
+	margin-left: 30px;         
+	border: 1px solid white;
+	background: white;
+	font-size: 30px;
+}
+
+.logo a:hover{
+	text-decoration: none;
+}
+
+/*------------------------ 2.1 Full Menu ------------------------*/
+
+.full-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    opacity: 0;
+    visibility: hidden;   
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+/* Full Menu */
+.full-menu .modal-close {
+    /* 'X' icon */
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    padding: 50px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background:rgba(0, 0, 0, 0.3) url(cd-icon-close.svg)no-repeat center center;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;     
+    transform: scale(0);
+    visibility 0s 0.3s, opacity 0.3s 0s;
+     
+transition: transform 0.3s 0s, visibility 0s 0.3s, opacity 0.3s 0s;
+}
+
+.no-touch .full-menu .modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.full-menu.visible {
+    background-size: 100%;
+    opacity: 1;
+    visibility: visible;   
+    transition: opacity 0.7s, visibility 0s;
+}
+
+.full-menu.visible .fullmenu-content {
+    -webkit-overflow-scrolling: touch;
+}
+
+.full-menu.visible .modal-close {
+    visibility: visible;
+    opacity: 1;    
+    transition: transform 0.3s 0s, visibility 0s 0s, opacity 0.3s 0s;     
+    transform: scale(1);
+}
+
+@media only screen and (min-width: 1100px) {
+    .full-menu .fullmenu-content {
+        padding: 6em 5%;
+    }
+    .full-menu .modal-close {
+        height: 60px;
+        width: 60px;
+    }
+    .full-menu p {
+        font-size: 25px;
+    }
+}
+
+.cd-transition-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+.cd-transition-layer .bg-layer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateY(-50%) translateX(-2%);   
+    transform: translateY(-50%) translateX(-2%);     
+    height: 100%;
+    /* our sprite is composed of 25 frames */
+    width: 2500%;
+    background: url(ink.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+
+.cd-transition-layer.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cd-transition-layer.opening .bg-layer {     
+    animation: cd-sequence 1.0s steps(24);     
+    animation-fill-mode: forwards;
+}
+
+.cd-transition-layer.closing .bg-layer {     
+    animation: cd-sequence-reverse 1.0s steps(24);    
+    animation-fill-mode: forwards;
+}
+
+.no-cssanimations .cd-transition-layer {
+    display: none;
+}
+
+ 
+@keyframes cd-sequence {
+    0% {
+        transform: translateY(-50%) translateX(-2%);
+    }
+    100% {        
+        transform: translateY(-50%) translateX(-98%);
+    }
+}
+
+    
+    
+  
+@keyframes cd-sequence-reverse {
+    0% {
+         
+        transform: translateY(-50%) translateX(-98%);
+    }
+    100% {
+         
+        transform: translateY(-50%) translateX(-2%);
+    }
+}
+
+
+/* 2.2 Header */
+
+.full-menu .fullmenu-content {
+    height: 100%;
+    width: 100%;
+	display: table;
+}
+
+.page-menu {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.page-menu li {
+    line-height: 50px;
+    margin-left: -25px;
+}
+.page-menu li:last-child {
+    line-height: 90px;
+}
+.page-menu li a {
+    color: #fff;
+    font-size: 26px;
+    position: relative;
+    font-weight: 500;
+     
+}
+.social img {
+    width: 15px;
+}
+.main .social {
+    margin-top: 30px;
+}
+
+.social a {
+    margin-right: 20px;
+}
+
+.social a:hover img {
+    opacity: .6;
+    transition: all ease 0.3s;
+}
+
+.social a:last-child {
+    margin-right: 0px;
+}
+header {
+    padding: 30px;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.nav-icon {
+    width: 23px;
+    height: 18px;
+    position: relative;    
+    transform: rotate(0deg);     
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.nav-icon span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    opacity: 1;    
+    transform: rotate(0deg);   
+    transition: .25s ease-in-out;
+}
+
+.nav-icon span:nth-child(1) {
+    top: 0px;     
+    transform-origin: left center;
+}
+
+.nav-icon span:nth-child(2) {
+    top: 6px;    
+    transform-origin: left center;
+}
+
+.nav-icon span:nth-child(3) {
+    top: 12px;     
+    transform-origin: left center;
+    width: 60%;
+    right: 0 !important;
+}
+
+.nav-icon:hover span:nth-child(3) {
+    width: 100%;
+}
+
+/*nav bar explosif fin */
+
+
+     
